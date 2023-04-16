@@ -265,16 +265,23 @@ progress,
 
 .block {
     @extend %flex;
-    gap: rem(20);
+    gap      : rem(20);
+    flex-wrap: wrap;
 
     .block__left,
     .block__right {
-        flex-basis: 50%;
-        width     : 50%;
 
-        &.block__form {
-            flex-basis: 40%;
-            width     : 40%;
+        @media only screen and (min-width:960px) {
+            flex-basis: 50%;
+            width     : 50%;
+        }
+
+        @media only screen and (min-width:1024px) {
+
+            &.block__form {
+                flex-basis: 40%;
+                width     : 40%;
+            }
         }
     }
 }
@@ -310,4 +317,26 @@ progress,
             }
         }
     }
+}
+
+.buttons-container {
+    @extend %flexRowYCenter;
+    gap      : rem(15);
+    flex-wrap: wrap;
+
+    @media only screen and (min-width:960px) {
+        flex-wrap: nowrap;
+    }
+
+    .btn {
+        @media only screen and (min-width:960px) {
+            flex-basis: 50%;
+            width     : 50%;
+        }
+    }
+}
+
+button[type="reset"] {
+    background-color: #ed8936;
+
 }
