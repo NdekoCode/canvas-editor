@@ -170,6 +170,15 @@ progress,
     transition      : all 0.2s ease-in-out;
     background-color: $theme;
     border-color    : $theme;
+
+    &.btn-icon {
+        svg {
+            display  : inline-block;
+            max-width: rem(18);
+        }
+
+        @extend %flexMiddle;
+    }
 }
 
 .body {

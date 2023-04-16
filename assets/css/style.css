@@ -47,12 +47,18 @@ button {
   }
 }
 
-.block, .uploader .upload-field label {
+.block,
+.btn.btn-icon, .uploader .upload-field label {
   display: flex;
 }
 
 .uploader .upload-field label {
   flex-direction: column;
+}
+
+.btn.btn-icon {
+  justify-content: center;
+  align-items: center;
 }
 
 .uploader .upload-field label {
@@ -893,6 +899,10 @@ progress,
   transition: all 0.2s ease-in-out;
   background-color: #454cad;
   border-color: #454cad;
+}
+.btn.btn-icon svg {
+  display: inline-block;
+  max-width: 1.125rem;
 }
 
 .body {
