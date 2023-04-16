@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Editor</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/app.js" type="module"></script>
+  </head>
+  <body>
+    <main class="container body">
+      <h1>Draw image and text on canvas and download as pdf</h1>
+      <div class="block">
+        <div class="block__left">
+          <!-- Upload  -->
+          <form id="file-upload-form" class="uploader" method="POST">
+            <div class="form-field upload-field">
+              <input
+                id="file-upload"
+                type="file"
+                name="fileUpload"
+                accept="image/*"
+              />
+
+              <label for="file-upload" id="file-drag">
+                <img id="file-image" src="#" alt="Preview" class="hidden" />
+                <div id="start">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  <div>Select a file or drag here</div>
+                  <div id="notimage" class="hidden">Please select an image</div>
+                  <span id="file-upload-btn" class="btn btn-primary"
+                    >Select a file</span
+                  >
+                </div>
+                <div id="response" class="hidden">
+                  <div id="messages"></div>
+                  <progress class="progress" id="file-progress" value="0">
+                    <span>0</span>%
+                  </progress>
+                </div>
+              </label>
+            </div>
+            <div class="form-field">
+              <label for="title">Title</label>
+              <input type="text" id="title" placeholder="Enter a image here" />
+            </div>
+            <button class="btn btn-submit" type="submit">Download</button>
+          </form>
+        </div>
+        <div class="block__right"></div>
+      </div>
+    </main>
+  </body>
+</html>
