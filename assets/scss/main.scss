@@ -14,17 +14,15 @@ canvas {
 }
 
 h2 {
-    font-family  : "Roboto", sans-serif;
-    font-size    : 26px;
+    font-size    : rem(26);
     line-height  : 1;
     color        : $theme;
     margin-bottom: 0;
 }
 
 p {
-    font-family: "Roboto", sans-serif;
-    font-size  : 18px;
-    color      : $dark-text;
+    font-size: rem(18);
+    color    : $dark-text;
 }
 
 // Upload Demo
@@ -34,31 +32,25 @@ p {
     clear    : both;
     margin   : 0 auto;
     width    : 100%;
-    max-width: 600px;
+    max-width: rem(600);
 
     .upload-field {
 
+
         label {
-            float        : left;
-            clear        : both;
-            width        : 100%;
-            padding      : 2rem 1.5rem;
-            text-align   : center;
-            background   : #fff;
-            border-radius: 7px;
-            border       : 3px solid #eee;
+            width  : 100%;
+            padding: 2rem 1.5rem;
+            @extend %flexColCenter;
+            background   : var(--white);
+            border-radius: rem(8);
             transition   : all .2s ease;
             user-select  : none;
 
-            &:hover {
-                border-color: $theme;
-            }
-
             &.hover {
-                border    : 3px solid $theme;
-                box-shadow: inset 0 0 0 6px #eee;
+                box-shadow: inset 0 0 0 rem(6) #eee;
 
                 #start {
+
                     i.fa {
                         transform: scale(0.8);
                         opacity  : 0.3;
@@ -68,88 +60,7 @@ p {
         }
     }
 
-    #start {
-        float: left;
-        clear: both;
-        width: 100%;
 
-        &.hidden {
-            display: none;
-        }
-
-        i.fa {
-            font-size    : 50px;
-            margin-bottom: 1rem;
-            transition   : all .2s ease-in-out;
-        }
-    }
-
-    #response {
-        float: left;
-        clear: both;
-        width: 100%;
-
-        &.hidden {
-            display: none;
-        }
-
-        #messages {
-            margin-bottom: .5rem;
-        }
-    }
-
-    #file-image {
-        display  : inline;
-        margin   : 0 auto .5rem auto;
-        width    : auto;
-        height   : auto;
-        max-width: 180px;
-
-        &.hidden {
-            display: none;
-        }
-    }
-
-    #notimage {
-        display: block;
-        float  : left;
-        clear  : both;
-        width  : 100%;
-
-        &.hidden {
-            display: none;
-        }
-    }
-
-    progress,
-    .progress {
-        // appearance: none;
-        display         : inline;
-        clear           : both;
-        margin          : 0 auto;
-        width           : 100%;
-        max-width       : 180px;
-        height          : 8px;
-        border          : 0;
-        border-radius   : 4px;
-        background-color: #eee;
-        overflow        : hidden;
-    }
-
-    .progress[value]::-webkit-progress-bar {
-        border-radius   : 4px;
-        background-color: #eee;
-    }
-
-    .progress[value]::-webkit-progress-value {
-        background   : linear-gradient(to right, darken($theme, 8%) 0%, $theme 50%);
-        border-radius: 4px;
-    }
-
-    .progress[value]::-moz-progress-bar {
-        background   : linear-gradient(to right, darken($theme, 8%) 0%, $theme 50%);
-        border-radius: 4px;
-    }
 
     input[type="file"] {
         display: none;
@@ -159,32 +70,235 @@ p {
         margin: 0 0 .5rem 0;
         color : $dark-text;
     }
+}
 
-    .btn {
-        display        : inline-block;
-        margin         : .5rem .5rem 1rem .5rem;
-        clear          : both;
-        font-family    : inherit;
-        font-weight    : 700;
-        font-size      : 14px;
-        text-decoration: none;
-        text-transform : initial;
-        border         : none;
-        border-radius  : .2rem;
-        outline        : none;
-        padding        : 0 1rem;
-        height         : 36px;
-        line-height    : 36px;
-        color          : #fff;
-        transition     : all 0.2s ease-in-out;
-        box-sizing     : border-box;
-        background     : $theme;
-        border-color   : $theme;
-        cursor         : pointer;
+
+
+#start {
+    @extend %pointer;
+    width: 100%;
+
+    &.hidden {
+        display: none;
     }
+
+    i.fa {
+        font-size    : 50px;
+        margin-bottom: 1rem;
+        transition   : all .2s ease-in-out;
+    }
+}
+
+#response {
+    float: left;
+    clear: both;
+    width: 100%;
+
+    &.hidden {
+        display: none;
+    }
+
+}
+
+#messages {
+    margin-bottom: .5rem;
+    word-wrap    : break-word;
+}
+
+#file-image {
+    display  : inline;
+    margin   : 0 auto .5rem auto;
+    width    : auto;
+    height   : auto;
+    max-width: 180px;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+#notimage {
+    display: block;
+    float  : left;
+    clear  : both;
+    width  : 100%;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+progress,
+.progress {
+    // appearance: none;
+    display         : inline;
+    clear           : both;
+    margin          : 0 auto;
+    width           : 100%;
+    max-width       : 180px;
+    height          : 8px;
+    border          : 0;
+    border-radius   : 4px;
+    background-color: #eee;
+    overflow        : hidden;
+}
+
+.progress[value]::-webkit-progress-bar {
+    border-radius   : 4px;
+    background-color: #eee;
+}
+
+.progress[value]::-webkit-progress-value {
+    background   : linear-gradient(to right, darken($theme, 8%) 0%, $theme 50%);
+    border-radius: 4px;
+}
+
+.progress[value]::-moz-progress-bar {
+    background   : linear-gradient(to right, darken($theme, 8%) 0%, $theme 50%);
+    border-radius: 4px;
+}
+
+.btn {
+    margin          : .5rem .5rem 1rem .5rem;
+    font-weight     : 700;
+    text-decoration : none;
+    border-radius   : .2rem;
+    padding         : 0 1rem;
+    height          : 36px;
+    line-height     : 36px;
+    color           : var(--white);
+    transition      : all 0.2s ease-in-out;
+    background-color: $theme;
+    border-color    : $theme;
 }
 
 .body {
     padding   : 2rem;
     background: #f8f8f8;
+
+    svg {
+        max-width: rem(120);
+    }
+}
+
+
+
+.formbold-form-label {
+    display      : block;
+    font-weight  : 500;
+    font-size    : 16px;
+    color        : #07074d;
+    margin-bottom: 12px;
+}
+
+.formbold-form-input {
+    width        : 100%;
+    padding      : 12px 24px;
+    border-radius: 6px;
+    border       : 1px solid #e0e0e0;
+    background   : var(--white);
+    font-weight  : 500;
+    font-size    : 16px;
+    color        : #6b7280;
+    outline      : none;
+    resize       : none;
+
+    &:focus {
+        border-color: #6a64f1;
+        box-shadow  : 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.formbold-btn {
+    text-align      : center;
+    font-size       : 16px;
+    border-radius   : 6px;
+    padding         : 14px 32px;
+    border          : none;
+    font-weight     : 600;
+    background-color: #6a64f1;
+    color           : var(--white);
+    cursor          : pointer;
+
+    &:hover {
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+}
+
+
+.w-full {
+    width: 100%;
+}
+
+.formbold-file-input {
+    input {
+        opacity : 0;
+        position: absolute;
+        width   : 100%;
+    }
+
+    label {
+        position       : relative;
+        border         : 1px dashed #e0e0e0;
+        border-radius  : 6px;
+        min-height     : 200px;
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        padding        : 48px;
+        text-align     : center;
+    }
+}
+
+.file-upload-btn {
+    @extend %pointer;
+}
+
+.block {
+    @extend %flex;
+    gap: rem(20);
+
+    .block__left,
+    .block__right {
+        flex-basis: 50%;
+        width     : 50%;
+
+        &.block__form {
+            flex-basis: 40%;
+            width     : 40%;
+        }
+    }
+}
+
+.canvas-editor {
+    width : 100%;
+    height: 100%;
+
+    canvas {
+        min-width    : 100%;
+        width        : 100%;
+        padding      : 2rem 1.5rem;
+        text-align   : center;
+        background   : #fff;
+        border-radius: 7px;
+        border       : 3px solid #eee;
+        transition   : all .2s ease;
+        user-select  : none;
+
+        &:hover {
+            border-color: $theme;
+        }
+
+        &.hover {
+            border    : 3px solid $theme;
+            box-shadow: inset 0 0 0 6px #eee;
+
+            #start {
+                i.fa {
+                    transform: scale(0.8);
+                    opacity  : 0.3;
+                }
+            }
+        }
+    }
 }

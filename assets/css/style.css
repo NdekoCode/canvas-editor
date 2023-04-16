@@ -10,9 +10,14 @@ img,
 span,
 data,
 input,
-button,
-ion-icon {
+button {
   display: block;
+}
+
+.file-upload-btn, #start, a,
+.btn,
+button {
+  cursor: pointer;
 }
 
 .container {
@@ -42,6 +47,19 @@ ion-icon {
   }
 }
 
+.block, .uploader .upload-field label {
+  display: flex;
+}
+
+.uploader .upload-field label {
+  flex-direction: column;
+}
+
+.uploader .upload-field label {
+  justify-content: center;
+  align-items: center;
+}
+
 *,
 *::before,
 *::after {
@@ -63,7 +81,7 @@ ion-icon {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: gray;
+  background-color: gray;
   -webkit-box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.7);
   box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.7);
   border-radius: 100px;
@@ -94,8 +112,11 @@ li {
   list-style: none;
 }
 
-a {
+a,
+.btn,
+button {
   color: inherit;
+  display: inline-block;
 }
 
 img {
@@ -743,16 +764,14 @@ canvas {
 }
 
 h2 {
-  font-family: "Roboto", sans-serif;
-  font-size: 26px;
+  font-size: 1.625rem;
   line-height: 1;
   color: #454cad;
   margin-bottom: 0;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #5f6982;
 }
 
@@ -761,76 +780,80 @@ p {
   clear: both;
   margin: 0 auto;
   width: 100%;
-  max-width: 600px;
+  max-width: 37.5rem;
 }
 .uploader .upload-field label {
-  float: left;
-  clear: both;
   width: 100%;
   padding: 2rem 1.5rem;
-  text-align: center;
-  background: #fff;
-  border-radius: 7px;
-  border: 3px solid #eee;
+  background: var(--white);
+  border-radius: 0.5rem;
   transition: all 0.2s ease;
   user-select: none;
 }
-.uploader .upload-field label:hover {
-  border-color: #454cad;
-}
 .uploader .upload-field label.hover {
-  border: 3px solid #454cad;
-  box-shadow: inset 0 0 0 6px #eee;
+  box-shadow: inset 0 0 0 0.375rem #eee;
 }
 .uploader .upload-field label.hover #start i.fa {
   transform: scale(0.8);
   opacity: 0.3;
 }
-.uploader #start {
-  float: left;
-  clear: both;
-  width: 100%;
-}
-.uploader #start.hidden {
+.uploader input[type=file] {
   display: none;
 }
-.uploader #start i.fa {
+.uploader div {
+  margin: 0 0 0.5rem 0;
+  color: #5f6982;
+}
+
+#start {
+  width: 100%;
+}
+#start.hidden {
+  display: none;
+}
+#start i.fa {
   font-size: 50px;
   margin-bottom: 1rem;
   transition: all 0.2s ease-in-out;
 }
-.uploader #response {
+
+#response {
   float: left;
   clear: both;
   width: 100%;
 }
-.uploader #response.hidden {
+#response.hidden {
   display: none;
 }
-.uploader #response #messages {
+
+#messages {
   margin-bottom: 0.5rem;
+  word-wrap: break-word;
 }
-.uploader #file-image {
+
+#file-image {
   display: inline;
   margin: 0 auto 0.5rem auto;
   width: auto;
   height: auto;
   max-width: 180px;
 }
-.uploader #file-image.hidden {
+#file-image.hidden {
   display: none;
 }
-.uploader #notimage {
+
+#notimage {
   display: block;
   float: left;
   clear: both;
   width: 100%;
 }
-.uploader #notimage.hidden {
+#notimage.hidden {
   display: none;
 }
-.uploader progress,
-.uploader .progress {
+
+progress,
+.progress {
   display: inline;
   clear: both;
   margin: 0 auto;
@@ -842,51 +865,144 @@ p {
   background-color: #eee;
   overflow: hidden;
 }
-.uploader .progress[value]::-webkit-progress-bar {
+
+.progress[value]::-webkit-progress-bar {
   border-radius: 4px;
   background-color: #eee;
 }
-.uploader .progress[value]::-webkit-progress-value {
+
+.progress[value]::-webkit-progress-value {
   background: linear-gradient(to right, #393f90 0%, #454cad 50%);
   border-radius: 4px;
 }
-.uploader .progress[value]::-moz-progress-bar {
+
+.progress[value]::-moz-progress-bar {
   background: linear-gradient(to right, #393f90 0%, #454cad 50%);
   border-radius: 4px;
 }
-.uploader input[type=file] {
-  display: none;
-}
-.uploader div {
-  margin: 0 0 0.5rem 0;
-  color: #5f6982;
-}
-.uploader .btn {
-  display: inline-block;
+
+.btn {
   margin: 0.5rem 0.5rem 1rem 0.5rem;
-  clear: both;
-  font-family: inherit;
   font-weight: 700;
-  font-size: 14px;
   text-decoration: none;
-  text-transform: initial;
-  border: none;
   border-radius: 0.2rem;
-  outline: none;
   padding: 0 1rem;
   height: 36px;
   line-height: 36px;
-  color: #fff;
+  color: var(--white);
   transition: all 0.2s ease-in-out;
-  box-sizing: border-box;
-  background: #454cad;
+  background-color: #454cad;
   border-color: #454cad;
-  cursor: pointer;
 }
 
 .body {
   padding: 2rem;
   background: #f8f8f8;
+}
+.body svg {
+  max-width: 7.5rem;
+}
+
+.formbold-form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #07074d;
+  margin-bottom: 12px;
+}
+
+.formbold-form-input {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: var(--white);
+  font-weight: 500;
+  font-size: 16px;
+  color: #6b7280;
+  outline: none;
+  resize: none;
+}
+.formbold-form-input:focus {
+  border-color: #6a64f1;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  border: none;
+  font-weight: 600;
+  background-color: #6a64f1;
+  color: var(--white);
+  cursor: pointer;
+}
+.formbold-btn:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.w-full {
+  width: 100%;
+}
+
+.formbold-file-input input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+.formbold-file-input label {
+  position: relative;
+  border: 1px dashed #e0e0e0;
+  border-radius: 6px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  text-align: center;
+}
+
+.block {
+  gap: 1.25rem;
+}
+.block .block__left,
+.block .block__right {
+  flex-basis: 50%;
+  width: 50%;
+}
+.block .block__left.block__form,
+.block .block__right.block__form {
+  flex-basis: 40%;
+  width: 40%;
+}
+
+.canvas-editor {
+  width: 100%;
+  height: 100%;
+}
+.canvas-editor canvas {
+  min-width: 100%;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 7px;
+  border: 3px solid #eee;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.canvas-editor canvas:hover {
+  border-color: #454cad;
+}
+.canvas-editor canvas.hover {
+  border: 3px solid #454cad;
+  box-shadow: inset 0 0 0 6px #eee;
+}
+.canvas-editor canvas.hover #start i.fa {
+  transform: scale(0.8);
+  opacity: 0.3;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -20,7 +20,7 @@
 
 ::-webkit-scrollbar-thumb {
 
-    background-image  : gray;
+    background-color  : gray;
     -webkit-box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.7);
     box-shadow        : inset 2px 2px 5px 0 rgba(#fff, 0.7);
     border-radius     : 100px;
@@ -57,13 +57,16 @@ img,
 span,
 data,
 input,
-button,
-ion-icon {
+button {
     @extend %block;
 }
 
-a {
-    color: inherit;
+a,
+.btn,
+button {
+    color  : inherit;
+    display: inline-block;
+    @extend %pointer;
 }
 
 img {

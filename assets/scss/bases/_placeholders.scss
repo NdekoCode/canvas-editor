@@ -2,6 +2,10 @@
     display: block;
 }
 
+%pointer {
+    cursor: pointer;
+}
+
 %container {
     width         : 100%;
     margin-inline : auto;
@@ -34,4 +38,55 @@
     .card__body {
         padding: rem(10);
     }
+}
+
+// === FLEX
+
+%flex {
+    display: flex;
+}
+
+%flexCol {
+    @extend %flex;
+    flex-direction: column;
+}
+
+
+// Pour center HORIZONTALEMENT un element en FLEX ligne 
+%flexRowXCenter {
+    @extend %flex;
+    justify-content: center;
+}
+
+// Pour center VERTICALEMENT un element en FLEX ligne 
+%flexRowYCenter {
+    @extend %flex;
+    align-items: center;
+}
+
+// Pour center HORIZONTALEMENT un element en FLEX colonne 
+%flexColXCenter {
+    @extend %flexCol;
+    align-items: center;
+}
+
+// Pour center VERTICALEMENT un element en FLEX colonne 
+%flexColYCenter {
+    @extend %flexCol;
+    justify-content: center;
+}
+
+// Pour center un element en FLEX verticalement et horizontalement
+%flexRowCenter,
+%flexMiddle {
+    @extend %flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+// Pour center un element en FLEX en colonne verticalement et horizontalement
+%flexColCenter {
+    @extend %flexCol;
+    justify-content: center;
+    align-items    : center;
 }

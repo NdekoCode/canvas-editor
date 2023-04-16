@@ -11,11 +11,15 @@
   <body>
     <main class="container body">
       <h1>Draw image and text on canvas and download as pdf</h1>
-      <div class="block">
-        <div class="block__left">
+      <div class="block formbold-form-wrapper">
+        <div class="block__left block__form">
           <!-- Upload  -->
-          <form id="file-upload-form" class="uploader" method="POST">
-            <div class="form-field upload-field">
+          <form
+            id="file-upload-form"
+            class="uploader formbold-form-wrapper"
+            method="POST"
+          >
+            <div class="form-field upload-field formbold-file-input">
               <input
                 id="file-upload"
                 type="file"
@@ -26,7 +30,12 @@
               <label for="file-upload" id="file-drag">
                 <img id="file-image" src="#" alt="Preview" class="hidden" />
                 <div id="start">
-                  <i class="fa fa-download" aria-hidden="true"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path
+                      fill="currentColor"
+                      d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z"
+                    />
+                  </svg>
                   <div>Select a file or drag here</div>
                   <div id="notimage" class="hidden">Please select an image</div>
                   <span id="file-upload-btn" class="btn btn-primary"
@@ -41,14 +50,27 @@
                 </div>
               </label>
             </div>
-            <div class="form-field">
-              <label for="title">Title</label>
-              <input type="text" id="title" placeholder="Enter a image here" />
+
+            <div class="form-field formbold-mb-5">
+              <label for="title" class="formbold-form-label">
+                Enter the image placeholder:
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Enter a image text here"
+                class="formbold-form-input"
+              />
             </div>
             <button class="btn btn-submit" type="submit">Download</button>
+            <button class="formbold-btn w-full">Send File</button>
           </form>
         </div>
-        <div class="block__right"></div>
+
+        <div class="block__right canvas-editor">
+          <canvas width="600" height="400" id="canvas"></canvas>
+        </div>
       </div>
     </main>
   </body>
