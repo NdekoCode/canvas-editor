@@ -1,0 +1,92 @@
+%block {
+    display: block;
+}
+
+%pointer {
+    cursor: pointer;
+}
+
+%container {
+    width         : 100%;
+    margin-inline : auto;
+    padding-inline: rem(20);
+
+    @media #{$sm-screen} {
+        max-width: 640px;
+    }
+
+    @media #{$md-screen} {
+        max-width     : 820px;
+        padding-inline: 0;
+    }
+
+    @media #{$lg-screen} {
+        max-width: 1060px;
+    }
+
+    @media #{$xl-screen} {
+        max-width: 1240px;
+    }
+
+}
+
+%card {
+    border-radius: 4px;
+    border       : rem(0.5) solid rgba(0, 0, 0, 0.1);
+
+    .card__header,
+    .card__body {
+        padding: rem(10);
+    }
+}
+
+// === FLEX
+
+%flex {
+    display: flex;
+}
+
+%flexCol {
+    @extend %flex;
+    flex-direction: column;
+}
+
+
+// Pour center HORIZONTALEMENT un element en FLEX ligne 
+%flexRowXCenter {
+    @extend %flex;
+    justify-content: center;
+}
+
+// Pour center VERTICALEMENT un element en FLEX ligne 
+%flexRowYCenter {
+    @extend %flex;
+    align-items: center;
+}
+
+// Pour center HORIZONTALEMENT un element en FLEX colonne 
+%flexColXCenter {
+    @extend %flexCol;
+    align-items: center;
+}
+
+// Pour center VERTICALEMENT un element en FLEX colonne 
+%flexColYCenter {
+    @extend %flexCol;
+    justify-content: center;
+}
+
+// Pour center un element en FLEX verticalement et horizontalement
+%flexRowCenter,
+%flexMiddle {
+    @extend %flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+// Pour center un element en FLEX en colonne verticalement et horizontalement
+%flexColCenter {
+    @extend %flexCol;
+    justify-content: center;
+    align-items    : center;
+}

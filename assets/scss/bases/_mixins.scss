@@ -1,0 +1,7 @@
+@mixin makeUtilitieSpacing($prefix:'m', $number:10, $spacingName:'margin') {
+    @for $i from 0 through $number {
+        .#{$prefix}-#{$i} {
+            #{$spacingName}: 0.25rem * $i !important;
+        }
+    }
+}

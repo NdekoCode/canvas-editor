@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --default-size: 14px;
+    --white       : #fff;
+    --font        : Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+$theme    : #454cad;
+$dark-text: #5f6982;
+
+$generatorUtilitiesLength : 10;
+
+// MEDIA QUERIES
+$xxs  : 280px;
+$xs   : 320px;
+$x-sm : 480px;
+$sm   : 576px;
+$md   : 768px;
+$lg   : 992px;
+$xl   : 1281px;
+$xxl  : 1400px;
+
+// SCREEN MEDIA
+$xxs-screen  : "only screen and (min-width:#{$xxs})";
+$xs-screen   : "only screen and (min-width:#{$xs})";
+$x-sm-screen : "only screen and (min-width:#{$x-sm})";
+$sm-screen   : "only screen and (min-width:#{$sm})";
+$md-screen   : "only screen and (min-width:#{$md})";
+$lg-screen   : "only screen and (min-width:#{$lg})";
+$xl-screen   : "only screen and (min-width:#{$xl})";
+$xxl-screen  : "only screen and (min-width:#{$xxl})";
