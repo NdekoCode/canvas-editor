@@ -1,0 +1,107 @@
+*,
+*::before,
+*::after {
+    font-family           : var(--font);
+    margin                : 0;
+    padding               : 0;
+    box-sizing            : border-box;
+    border                : 0;
+    vertical-align        : baseline;
+    font-variant-ligatures: none;
+}
+
+::-webkit-scrollbar {
+    width: rem(12);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-gray-smooth)
+}
+
+::-webkit-scrollbar-thumb {
+
+    background-image  : gray;
+    -webkit-box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.7);
+    box-shadow        : inset 2px 2px 5px 0 rgba(#fff, 0.7);
+    border-radius     : 100px;
+}
+
+html {
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    font-size      : var(--default-size);
+    width          : 100%;
+    height         : 100%;
+    min-height     : 100vh;
+    overflow-x     : hidden;
+}
+
+body {
+    line-height     : 1.2;
+    background-color: var(--white);
+}
+
+li {
+    list-style: none;
+}
+
+a,
+img,
+span,
+data,
+input,
+button,
+ion-icon {
+    @extend %block;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height   : auto;
+}
+
+input,
+button {
+    background   : none;
+    border       : none;
+    font         : inherit;
+    outline      : none;
+    border-radius: rem(5);
+}
+
+input {
+    width: 100%;
+}
+
+input,
+button,
+a {
+    color: inherit;
+}
+
+@include makeUtilitieSpacing();
+@include makeUtilitieSpacing('mx', $generatorUtilitiesLength, 'margin-inline');
+@include makeUtilitieSpacing('my', $generatorUtilitiesLength, 'margin-block');
+@include makeUtilitieSpacing('ms', $generatorUtilitiesLength, 'margin-inline-start');
+@include makeUtilitieSpacing('me', $generatorUtilitiesLength, 'margin-inline-end');
+@include makeUtilitieSpacing('mt', $generatorUtilitiesLength, 'margin-block-start');
+@include makeUtilitieSpacing('mb', $generatorUtilitiesLength, 'margin-block-end');
+
+@include makeUtilitieSpacing('p', $generatorUtilitiesLength, 'padding');
+@include makeUtilitieSpacing('px', $generatorUtilitiesLength, 'padding-inline');
+@include makeUtilitieSpacing('py', $generatorUtilitiesLength, 'padding-block');
+@include makeUtilitieSpacing('ps', $generatorUtilitiesLength, 'padding-inline-start');
+@include makeUtilitieSpacing('pe', $generatorUtilitiesLength, 'padding-inline-end');
+@include makeUtilitieSpacing('pt', $generatorUtilitiesLength, 'padding-block-start');
+@include makeUtilitieSpacing('pb', $generatorUtilitiesLength, 'padding-block-end');
