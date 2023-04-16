@@ -1,5 +1,4 @@
 // File Upload
-//
 function ekUpload() {
   function Init() {
     console.log("Upload Initialised");
@@ -11,7 +10,7 @@ function ekUpload() {
     fileSelect.addEventListener("change", fileSelectHandler, false);
 
     // Is XHR2 available?
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     if (xhr.upload) {
       // File Drop
       fileDrag.addEventListener("dragover", fileDragHover, false);
@@ -21,7 +20,7 @@ function ekUpload() {
   }
 
   function fileDragHover(e) {
-    var fileDrag = document.getElementById("file-drag");
+    const fileDrag = document.getElementById("file-drag");
 
     e.stopPropagation();
     e.preventDefault();
@@ -32,13 +31,13 @@ function ekUpload() {
 
   function fileSelectHandler(e) {
     // Fetch FileList object
-    var files = e.target.files || e.dataTransfer.files;
+    const files = e.target.files || e.dataTransfer.files;
 
     // Cancel event and hover styling
     fileDragHover(e);
 
     // Process all File objects
-    for (var i = 0, f; (f = files[i]); i++) {
+    for (let i = 0, f; (f = files[i]); i++) {
       parseFile(f);
       uploadFile(f);
     }
@@ -47,7 +46,7 @@ function ekUpload() {
   // Output
   function output(msg) {
     // Response
-    var m = document.getElementById("messages");
+    const m = document.getElementById("messages");
     m.innerHTML = msg;
   }
 
@@ -55,11 +54,11 @@ function ekUpload() {
     console.log(file.name);
     output("<strong>" + encodeURI(file.name) + "</strong>");
 
-    // var fileType = file.type;
+    // const fileType = file.type;
     // console.log(fileType);
-    var imageName = file.name;
+    const imageName = file.name;
 
-    var isGood = /\.(?=gif|jpg|png|jpeg)/gi.test(imageName);
+    const isGood = /\.(?=gif|jpg|png|jpeg)/gi.test(imageName);
     if (isGood) {
       document.getElementById("start").classList.add("hidden");
       document.getElementById("response").classList.remove("hidden");
@@ -77,7 +76,7 @@ function ekUpload() {
   }
 
   function setProgressMaxValue(e) {
-    var pBar = document.getElementById("file-progress");
+    const pBar = document.getElementById("file-progress");
 
     if (e.lengthComputable) {
       pBar.max = e.total;
@@ -85,7 +84,7 @@ function ekUpload() {
   }
 
   function updateFileProgress(e) {
-    var pBar = document.getElementById("file-progress");
+    const pBar = document.getElementById("file-progress");
 
     if (e.lengthComputable) {
       pBar.value = e.loaded;
@@ -93,7 +92,7 @@ function ekUpload() {
   }
 
   function uploadFile(file) {
-    var xhr = new XMLHttpRequest(),
+    const xhr = new XMLHttpRequest(),
       fileInput = document.getElementById("class-roster-file"),
       pBar = document.getElementById("file-progress"),
       fileSizeLimit = 1024; // In MB
@@ -138,3 +137,80 @@ function ekUpload() {
   }
 }
 ekUpload();
+
+function drawImageScaled(img, ctx) {
+  const canvas = ctx.canvas;
+  const hRatio = canvas.width / img.width;
+  const vRatio = canvas.height / img.height;
+  const ratio = Math.min(hRatio, vRatio);
+  const centerShift_x = (canvas.width - img.width * ratio) / 2;
+  const centerShift_y = (canvas.height - img.height * ratio) / 2;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(
+    img,
+    0,
+    0,
+    img.width,
+    img.height,
+    centerShift_x,
+    centerShift_y,
+    img.width * ratio,
+    img.height * ratio
+  );
+}
+
+// Canvas
+
+const form = document.getElementById("file-upload-form");
+form.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+});
+/**
+ * Dessine une image dans un canvas
+ * @author NdekoCode
+ * @param {string} url
+ * @param {HTMLCanvasElement} canvas
+ * @param {CanvasRenderingContext2D} ctx
+ */
+function drawImageOnCanvas(url, canvas, ctx) {
+  const image = new Image();
+  image.addEventListener("load", () => {
+    const maxWidth = canvas.width;
+    const maxHeight = canvas.height;
+    const imageWidth = image.naturalWidth;
+    const imageHeight = image.naturalHeight;
+
+    // calculate the maximum dimensions while preserving aspect ratio
+    let width = maxWidth;
+    let height = maxHeight;
+    if (imageWidth > maxWidth || imageHeight > maxHeight) {
+      const ratio = Math.min(maxWidth / imageWidth, maxHeight / imageHeight);
+      width = Math.floor(imageWidth * ratio);
+      height = Math.floor(imageHeight * ratio);
+    }
+
+    // center the image in the canvas
+    const xMargin = Math.floor((maxWidth - width) / 2);
+    const yMargin = Math.floor((maxHeight - height) / 2);
+
+    ctx.drawImage(image, xMargin, yMargin, width, height);
+  });
+  image.src = url;
+}
+/** @type {HTMLCanvasElement} */
+const canvas = document.getElementById("canvas");
+/** @type {CanvasRenderingContext2D} */
+const ctx = canvas.getContext("2d");
+const imageFileUpload = document.getElementById("file-upload");
+imageFileUpload.addEventListener("change", function (evt) {
+  const image = imageFileUpload.files[0];
+  /**@type {HTMLImageElement} */
+  const imageURL = URL.createObjectURL(image);
+  drawImageOnCanvas(imageURL, canvas, ctx);
+});
+const text = document.getElementById("title");
+text.addEventListener("input", (evt) => {
+  let value = evt.currentTarget.value;
+  drawTextOnCanvas(text, canvas, ctx);
+  console.log(value);
+});
