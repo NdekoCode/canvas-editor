@@ -1,4 +1,5 @@
 const Jimp = require("jimp");
+const path = require("node:path");
 
 /**
  * Represents the color Options.
@@ -8,7 +9,7 @@ const Jimp = require("jimp");
  */
 
 /**
- * Represents a user.
+ * Represents a textPosition options.
  * @typedef {Object} textPosition
  * @property {number} x1 - Position X of the first text
  * @property {number} y1 - Position Y of the first text
@@ -17,7 +18,7 @@ const Jimp = require("jimp");
  */
 
 /**
- * Represents a user.
+ * Represents a imageOptions.
  * @typedef {Object} ImageOptions
  * @property {string[]} images - Images Array
  * @property {string} txt_big - the begger text
@@ -26,9 +27,9 @@ const Jimp = require("jimp");
  * @property {textPosition} textPosition - positions for text
  */
 
-const img1 = "../images/img-1.jpg";
-const img2 = "../images/img-2.jpg";
-const img3 = "../images/img-3.jpg";
+const img1 = path.dirname(__dirname) + "/images/img-1.jpg";
+const img2 = path.dirname(__dirname) + "/images/img-2.jpg";
+const img3 = path.dirname(__dirname) + "/images/img-3.jpg";
 
 const txt_big = "HELLO BABY world";
 const txt_small = "BUMRANG to my world";
