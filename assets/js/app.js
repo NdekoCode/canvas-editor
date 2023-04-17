@@ -15,8 +15,9 @@ const downloadBtn = document.getElementById("btn-download");
 const ctx = canvas.getContext("2d");
 const imageFileUpload = document.getElementById("file-upload");
 const text = document.getElementById("title");
+const size = document.getElementById("size");
 const form = document.getElementById("file-upload-form");
-const formContent = { textCanvasColor: "", textCanvas: "" };
+const formContent = { textCanvasColor: "", textCanvas: "", textSize: 40 };
 imageFileUpload.addEventListener("change", function (evt) {
   const image = imageFileUpload.files[0];
   /**@type {HTMLImageElement} */
@@ -27,6 +28,10 @@ imageFileUpload.addEventListener("change", function (evt) {
 text.addEventListener("input", (evt) => {
   let value = evt.currentTarget.value;
   formContent.textCanvas = value;
+});
+size.addEventListener("input", (evt) => {
+  let value = evt.currentTarget.value;
+  formContent.textSize = value;
 });
 
 downloadBtn.addEventListener("click", () => downloadCanvasImage(canvas));

@@ -176,12 +176,12 @@ export function drawTextOnCanvas(
   canvas,
   ctx
 ) {
-  console.log(textOptions);
-  ctx.font = "20px Inter";
+  console.log(getFont(canvas, textOptions.textSize));
+  ctx.font = getFont(canvas, textOptions.textSize);
   ctx.textAlign = "center";
-  ctx.strokeStyle = textOptions.textCanvasColor;
+  ctx.fillStyle = textOptions.textCanvasColor;
 
-  ctx.strokeText(textOptions.textCanvas, canvas.width / 2, canvas.height / 2);
+  ctx.fillText(textOptions.textCanvas, canvas.width / 2, canvas.height / 2);
 }
 
 export function downloadCanvasImage(canvas) {
@@ -190,4 +190,20 @@ export function downloadCanvasImage(canvas) {
   link.download = "edit-canvas.png";
   link.href = canvas.toDataURL();
   link.click();
+}
+/**
+ * Dessine une image dans un canvas
+ * @author NdekoCode
+ * @param {string} fontSize
+ * @param {HTMLCanvasElement} canvas default size for font
+ * @param {CanvasRenderingContext2D} ctx
+ */
+export function getFont(canvas, fontSize = 70) {
+  const fontBase = canvas.width; // selected default width for canvas
+  console.log(fontSize);
+  console.log(fontSize, fontBase, "ratio", parseInt(fontSize) / fontBase);
+  const ratio = parseInt(fontSize) / fontBase; // calc ratio
+  const size = fontBase * ratio; // get font size based on current width
+  console.log(size);
+  return (size | 0) + "px Inter"; // set font
 }
