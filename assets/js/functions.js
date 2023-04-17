@@ -171,12 +171,17 @@ export function drawImageOnCanvas(url, canvas, ctx) {
  * @param {HTMLCanvasElement} canvas
  * @param {CanvasRenderingContext2D} ctx
  */
-export function drawTextOnCanvas(text, canvas, ctx) {
+export function drawTextOnCanvas(
+  textOptions = { textCanvasColor: "#fff" },
+  canvas,
+  ctx
+) {
+  console.log(textOptions);
   ctx.font = "20px Inter";
   ctx.textAlign = "center";
-  ctx.strokeStyle = "white";
-  console.log(text);
-  ctx.strokeText(text, canvas.width / 2, canvas.height / 2);
+  ctx.strokeStyle = textOptions.textCanvasColor;
+
+  ctx.strokeText(textOptions.textCanvas, canvas.width / 2, canvas.height / 2);
 }
 
 export function downloadCanvasImage(canvas) {

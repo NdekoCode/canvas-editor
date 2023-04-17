@@ -48,12 +48,16 @@ button {
 }
 
 .block,
-.btn.btn-icon, .uploader .upload-field label {
+.btn.btn-icon, .buttons-container, .uploader .upload-field label {
   display: flex;
 }
 
 .uploader .upload-field label {
   flex-direction: column;
+}
+
+.buttons-container {
+  align-items: center;
 }
 
 .btn.btn-icon {
@@ -976,16 +980,21 @@ progress,
 
 .block {
   gap: 1.25rem;
+  flex-wrap: wrap;
 }
-.block .block__left,
-.block .block__right {
-  flex-basis: 50%;
-  width: 50%;
+@media only screen and (min-width: 960px) {
+  .block .block__left,
+  .block .block__right {
+    flex-basis: 50%;
+    width: 50%;
+  }
 }
-.block .block__left.block__form,
-.block .block__right.block__form {
-  flex-basis: 40%;
-  width: 40%;
+@media only screen and (min-width: 1024px) {
+  .block .block__left.block__form,
+  .block .block__right.block__form {
+    flex-basis: 40%;
+    width: 40%;
+  }
 }
 
 .canvas-editor {
@@ -1013,6 +1022,26 @@ progress,
 .canvas-editor canvas.hover #start i.fa {
   transform: scale(0.8);
   opacity: 0.3;
+}
+
+.buttons-container {
+  gap: 0.9375rem;
+  flex-wrap: wrap;
+}
+@media only screen and (min-width: 960px) {
+  .buttons-container {
+    flex-wrap: nowrap;
+  }
+}
+@media only screen and (min-width: 960px) {
+  .buttons-container .btn {
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+
+button[type=reset] {
+  background-color: #ed8936;
 }
 
 /*# sourceMappingURL=style.css.map */
