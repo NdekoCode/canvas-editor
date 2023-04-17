@@ -1,4 +1,5 @@
 const Jimp = require("jimp");
+const path = require("node:path");
 
 /**
  * Represents the color Options.
@@ -26,9 +27,9 @@ const Jimp = require("jimp");
  * @property {textPosition} textPosition - positions for text
  */
 
-const img1 = "../images/img-1.jpg";
-const img2 = "../images/img-2.jpg";
-const img3 = "../images/img-3.jpg";
+const img1 = path.dirname(__dirname) + "/images/img-1.jpg";
+const img2 = path.dirname(__dirname) + "/images/img-2.jpg";
+const img3 = path.dirname(__dirname) + "/images/img-3.jpg";
 
 const txt_big = "HELLO BABY world";
 const txt_small = "BUMRANG to my world";
