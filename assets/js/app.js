@@ -3,6 +3,7 @@ import {
   drawImageOnCanvas,
   drawTextOnCanvas,
   ekUpload,
+  get_processed_img,
 } from "./functions.js";
 
 // Canvas
@@ -55,5 +56,22 @@ form.addEventListener("submit", (evt) => {
   }
 });
 
+const img1 = "../images/img-1.jpg";
+const img2 = "../images/img-2.jpg";
+const img3 = "../images/img-3.jpg";
+
+const txt_big = "Hello world";
+const txt_small = "Welcome to my world";
+
 // File Upload
 ekUpload();
+
+// Utilisez la fonction pour obtenir l'image finale
+get_processed_img(img1, img2, img3, txt_big, txt_small)
+  .then((processed_image) => {
+    // Faites quelque chose avec l'image finale
+    console.log(processed_image);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
